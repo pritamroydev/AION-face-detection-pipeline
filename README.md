@@ -27,7 +27,7 @@ This repository contains the **face detection and embedding pipeline** used in t
 ## 📂 Project Structure
   
 ```bash
-├── trial.py                → Main Streamlit app  
+├── trial1.py                → Main Streamlit app  
 ├── model weights & assets  (stored in same folder)
 ├── requirements.txt        
 ```

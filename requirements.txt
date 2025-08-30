@@ -7,4 +7,5 @@ retina-face
 opencv-python-headless
 numpy
 st-annotated-text
+tf-keras
 

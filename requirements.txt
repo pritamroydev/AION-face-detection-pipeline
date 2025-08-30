@@ -1,3 +1,4 @@
+-c constraints.txt
 streamlit
 pillow
 torch
@@ -6,3 +7,4 @@ retina-face
 opencv-python-headless
 numpy
 st-annotated-text
+

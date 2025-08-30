@@ -8,6 +8,7 @@ opencv-python-headless
 numpy
 st-annotated-text==4.0.2
 tensorflow==2.20.0
+tf_keras
 
 
 

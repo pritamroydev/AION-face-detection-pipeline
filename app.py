@@ -4,7 +4,6 @@ import torch
 import numpy as np
 from retinaface import RetinaFace
 from facenet_pytorch import InceptionResnetV1
-import cv2
 import base64       
 from io import BytesIO
 from annotated_text import annotated_text
@@ -354,4 +353,5 @@ st.markdown("""
         
     </div>
 """, unsafe_allow_html=True)
+
 

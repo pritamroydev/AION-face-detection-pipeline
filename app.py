@@ -9,6 +9,17 @@ import base64
 from io import BytesIO
 from annotated_text import annotated_text
 
+import os
+os.environ["OPENCV_VIDEOIO_PRIORITY_MSMF"] = "0"
+
+import cv2
+
+# Disable GUI-related functions (prevents libGL dependency)
+cv2.imshow = lambda *args, **kwargs: None
+cv2.namedWindow = lambda *args, **kwargs: None
+cv2.waitKey = lambda *args, **kwargs: None
+cv2.destroyAllWindows = lambda *args, **kwargs: None
+
 # -------------------------
 # Face Detection Function
 # -------------------------
@@ -343,3 +354,4 @@ st.markdown("""
         
     </div>
 """, unsafe_allow_html=True)
+

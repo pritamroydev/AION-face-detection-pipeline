@@ -1,11 +1,5 @@
-streamlit==1.37.0
-pillow==10.4.0
-torch==2.8.0
-torchvision==0.23.0
-facenet-pytorch==2.5.3
-retinaface==0.0.6
-opencv-python-headless==4.9.0.80
-numpy==1.26.4
-st-annotated-text==4.0.2
-tensorflow==2.15.0
-tf-keras==2.15.0
+numpy>=1.14.0
+gdown>=3.10.1
+Pillow>=5.2.0
+opencv-python>=3.4.4
+tensorflow>=1.9.0

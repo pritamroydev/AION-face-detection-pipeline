@@ -1,13 +1,14 @@
 -c constraints.txt
 streamlit
 pillow
-torch==2.2.2
+torch==2.8.0
 facenet-pytorch
 retina-face
 opencv-python-headless
 numpy
 st-annotated-text
 tensorflow==2.15.0
+
 
 
 

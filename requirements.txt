@@ -1,10 +1,10 @@
 streamlit==1.37.0
 pillow==10.4.0
-torch==2.2.2
-torchvision==0.17.2
+torch==2.8.0
+torchvision==0.23.0
 facenet-pytorch==2.5.3
-retinaface==0.0.13
-opencv-python==4.9.0.80
+retinaface==0.0.17
+opencv-python-headless==4.12.0.88
 numpy==1.26.4
 st-annotated-text==4.0.1
 tensorflow==2.15.0

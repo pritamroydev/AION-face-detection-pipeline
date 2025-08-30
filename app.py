@@ -15,30 +15,39 @@ from annotated_text import annotated_text
 facenet = InceptionResnetV1(pretrained='vggface2').eval()
 
 def detect_faces_and_draw(image: Image.Image):
-    img = cv2.cvtColor(np.array(image), cv2.COLOR_RGB2BGR)
-
-   
-    faces = RetinaFace.detect_faces(img)
-
+    img = np.array(image)
     
-    
+    img_bgr = img[:, :, ::-1]
+    faces = RetinaFace.detect_faces(img_bgr)
 
     for key in faces.keys():
         x1, y1, x2, y2 = faces[key]['facial_area']
-        face = img[y1:y2, x1:x2]
 
-        face_resized = cv2.resize(face, (160, 160))
+        # Thickness of the rectangle border
+        thickness = 4
+
+        # Draw top and bottom borders
+        img[y1:y1+thickness, x1:x2, 0] = 255  # Red channel
+        img[y1:y1+thickness, x1:x2, 1:3] = 0  # Green & Blue
+        img[y2-thickness:y2, x1:x2, 0] = 255
+        img[y2-thickness:y2, x1:x2, 1:3] = 0
+
+        # Draw left and right borders
+        img[y1:y2, x1:x1+thickness, 0] = 255
+        img[y1:y2, x1:x1+thickness, 1:3] = 0
+        img[y1:y2, x2-thickness:x2, 0] = 255
+        img[y1:y2, x2-thickness:x2, 1:3] = 0
+
+        # Optional: process face for Facenet
+        face = img_bgr[y1:y2, x1:x2]
+        face_resized = np.array(Image.fromarray(face[:, :, ::-1]).resize((160, 160)))
         face_tensor = torch.tensor(face_resized).float().permute(2, 0, 1) / 255.0
         face_tensor = (face_tensor - 0.5) / 0.5
         face_tensor = face_tensor.unsqueeze(0)
-
         with torch.no_grad():
             _ = facenet(face_tensor)
 
-        cv2.rectangle(img, (x1, y1), (x2, y2), (0, 0, 255), 4)
-
-    final_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
-    return Image.fromarray(final_rgb), len(faces)
+    return Image.fromarray(img), len(faces)
 
 # -------------------------
 # Streamlit UI

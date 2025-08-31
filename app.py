@@ -267,32 +267,19 @@ def aion():
 
 st.sidebar.title("Navigation")
 
-choice = st.sidebar.button("← Back", ["All", "Home", "Crew", "AION"])
 
-if st.sidebar.button("Home"):
-    section = "Home"
-elif st.sidebar.button("Crew"):
-    section = "Crew"
-elif st.sidebar.button("AION"):
-    section = "AION"
-elif st.sidebar.button("All"):
-    section = "All"
-else:
-    section = "All"  # default
+choice = st.sidebar.selectbox("Sections: ", ["All", "Home", "Crew", "AION"])
 
 
-# Render sections
-if section == "Home":
+if choice == "All":
     home()
-elif section == "Crew":
     crew()
-elif section == "AION":
     aion()
-elif section == "All":
+elif choice == "Home":
     home()
-    st.markdown("---")
+elif choice == "Crew":
     crew()
-    st.markdown("---")
+elif choice == "AION":
     aion()
 
 
@@ -353,5 +340,6 @@ st.markdown("""
         
     </div>
 """, unsafe_allow_html=True)
+
 
 

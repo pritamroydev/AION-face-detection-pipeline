@@ -8,7 +8,7 @@ import base64
 from io import BytesIO
 from annotated_text import annotated_text
 
-@st.cache_resource
+
 
 import os
 os.environ["OPENCV_VIDEOIO_PRIORITY_MSMF"] = "0"
@@ -26,6 +26,7 @@ cv2.destroyAllWindows = lambda *args, **kwargs: None
 # -------------------------
 facenet = InceptionResnetV1(pretrained='vggface2').eval()
 
+@st.cache_resource
 def detect_faces_and_draw(image: Image.Image):
     img = np.array(image)
     
@@ -342,6 +343,7 @@ st.markdown("""
         
     </div>
 """, unsafe_allow_html=True)
+
 
 
 

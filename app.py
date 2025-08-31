@@ -8,6 +8,8 @@ import base64
 from io import BytesIO
 from annotated_text import annotated_text
 
+@st.cache_resource
+
 import os
 os.environ["OPENCV_VIDEOIO_PRIORITY_MSMF"] = "0"
 
@@ -340,6 +342,7 @@ st.markdown("""
         
     </div>
 """, unsafe_allow_html=True)
+
 
 
 
